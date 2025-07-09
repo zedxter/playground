@@ -1,39 +1,10 @@
-fn is_substring(input: &str, term: &str) -> i32 {
-    let term_len = term.len();
-    let input_len = input.len();
+pub mod utils;
+pub mod structures;
 
-    for (i, c) in input.chars().enumerate() {
-        if i + term.len() > input_len {
-            return -1;
-        }
-        if c == term.chars().nth(0).unwrap() && input[i..(i + term_len)].eq(term) {
-            return i as i32;
-        }
-    }
-    -1
-}
+use crate::utils::is_substring;
+use crate::utils::is_substring_by_char;
 
-fn is_substring_by_char(input: &str, term: &str) -> i32 {
-    let term_len = term.len();
-    let input_len = input.len();
-
-    for (i, _) in input.chars().enumerate() {
-        if i + term_len > input_len {
-            return -1;
-        }
-
-        for (j, c) in term.chars().enumerate() {
-            let i_char = input.chars().nth(i + j).unwrap();
-            if i_char != c {
-                break;
-            }
-            if j == term_len - 1 {
-                return i as i32;
-            }
-        }
-    }
-    -1
-}
+use crate::structures::LinkedList;
 
 fn main() {
     let input = String::from("Very fancy text!");
@@ -43,4 +14,14 @@ fn main() {
 
     println!("The index of substring is {result}");
     println!("The char by char index of substring is {result2}");
+
+    let mut ll = LinkedList::new();
+    ll.push(123);
+    ll.push(234);
+    ll.push(345);
+    let _elem = ll.pop();
+    match _elem {
+        Some(value) => println!("The popped value is {value}"),
+        None => println!("The list is empty"),
+    }
 }
