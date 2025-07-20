@@ -34,3 +34,17 @@ pub fn is_substring_by_char(input: &str, term: &str) -> i32 {
     }
     -1
 }
+
+
+#[cfg(test)]
+mod test {
+    use super::is_substring;
+
+    #[test]
+    fn test_is_substring() {
+        let result = is_substring("Very long text!", "tex");
+        assert_eq!(result, 10);
+        let result = is_substring("s", "test");
+        assert_eq!(result, -1);
+    }
+}
