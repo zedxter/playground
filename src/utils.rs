@@ -38,13 +38,21 @@ pub fn is_substring_by_char(input: &str, term: &str) -> i32 {
 
 #[cfg(test)]
 mod test {
-    use super::is_substring;
+    use super::{is_substring, is_substring_by_char};
 
     #[test]
     fn test_is_substring() {
         let result = is_substring("Very long text!", "tex");
         assert_eq!(result, 10);
         let result = is_substring("s", "test");
+        assert_eq!(result, -1);
+    }
+
+    #[test]
+    fn test_is_substring_by_char() {
+        let result = is_substring_by_char("something to search in", "t");
+        assert_eq!(result, 4);
+        let result = is_substring_by_char("s", "test");
         assert_eq!(result, -1);
     }
 }
